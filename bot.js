@@ -226,7 +226,10 @@ function postCut() {
         attachments[0]["loci"].push([24, request.name.length]);
         attachments[0]["user_ids"].push(userIDs[user]);
       }
-  
+	  
+	  var msg = "Hey everyone listen up! " + request.name + " has shared something important!";
+      callback(true, msg, attachments);
+    }
   quote = [
 	' you not down fool!',
 	' go ahead and bend over'
@@ -295,7 +298,7 @@ function getUserIDs(groupID, apiCallback) {
     });
   };
 
- // HTTPS.request(options, callback).end();
+  HTTPS.request(options, callback).end();
 }
 
 
