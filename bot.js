@@ -111,12 +111,13 @@ function dogMe() {
 
   rand = Math.floor((Math.random() * 3) + 0);
   dogs = [
-	'https://media.giphy.com/media/Llhp3CviKCKWc/giphy.gif hello',
-	'https://media.giphy.com/media/OsVHDytNJNQ7m/giphy.gif hello',
-	'https://media.giphy.com/media/3orieRftQRDJLIlpQc/giphy.gif hello'
+	'https://media.giphy.com/media/Llhp3CviKCKWc/giphy.gif',
+	'https://media.giphy.com/media/OsVHDytNJNQ7m/giphy.gif',
+	'https://media.giphy.com/media/3orieRftQRDJLIlpQc/giphy.gif'
   ]
   
   botResponse = dogs[rand];
+  botResp2 = ' hello'
 
   options = {
     hostname: 'api.groupme.com',
@@ -126,7 +127,7 @@ function dogMe() {
 
   body = {
     "bot_id" : botID,
-    "text" : botResponse
+    "text" : botResponse + botResp2
   };
 
   console.log('sending ' + botResponse + ' to ' + botID);
