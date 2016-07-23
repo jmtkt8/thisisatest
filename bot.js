@@ -36,7 +36,8 @@ function respond() {
   }else if(request.text && zetaxiRegex.test(request.text)){
     this.res.writeHead(200);
     postZetaXiFounders();
-    this.res.end();else {
+    this.res.end();
+  }else {
     console.log("don't care");
     this.res.writeHead(200);
     this.res.end();
@@ -289,8 +290,8 @@ function postCut() {
 function postZetaXiFounders() {
   var botResponse, options, body, botReq;
 
-  //botResponse = "*Stomps foot twice*\n #1: Ana Gonzalez\n #2: Brenda Crts\n #3: Emily Fowler\n";
-  botResponse = "*Stomps foot twice*";
+  botResponse = "*Stomps foot twice*\n #1: Ana Gonzalez\n #2: Brenda Crts\n #3: Emily Fowler\n";
+  //botResponse = "*Stomps foot twice*";
   
   options = {
     hostname: 'api.groupme.com',
