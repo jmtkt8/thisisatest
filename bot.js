@@ -295,7 +295,7 @@ function getUserIDs(groupID, apiCallback) {
     });
   };
 
-  HTTPS.request(options, callback).end();
+ // HTTPS.request(options, callback).end();
 }
 
 
