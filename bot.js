@@ -113,6 +113,7 @@ function dogMe() {
   dogs = [
 	'https://media.giphy.com/media/Llhp3CviKCKWc/giphy.gif',
 	'https://media.giphy.com/media/OsVHDytNJNQ7m/giphy.gif',
+	'http://flashfunpages.com/ecards/wp-content/uploads/2015/02/funnydogfaces-darn.jpg',
 	'https://media.giphy.com/media/3orieRftQRDJLIlpQc/giphy.gif'
   ]
   
