@@ -10,6 +10,7 @@ function respond() {
 	  dogRegex = /^Conquistabot dawg face$/;
 	  introRegex = /^Conquistabot introduce yourself/;
 	  helpRegex = /^Conquistabot help/;
+	  cutRegex = /^Conquistabot who's getting in the cut today/;
 	  
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -26,6 +27,10 @@ function respond() {
   }else if(request.text && introRegex.test(request.text)){
     this.res.writeHead(200);
     postIntro();
+    this.res.end();
+  }else if(request.text && cutRegex.test(request.text)){
+    this.res.writeHead(200);
+    postCut();
     this.res.end();
   }else {
     console.log("don't care");
@@ -168,6 +173,60 @@ function postIntro() {
   body = {
     "bot_id" : botID,
     "text" : botResponse
+  };
+
+  console.log('sending ' + botResponse + ' to ' + botID);
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      } else {
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
+}
+
+
+function postCut() {
+  var botResponse, options, body, botReq, rand;
+
+  rand = Math.floor((Math.random() * 9) + 0);
+  dogs = [
+	'@James Tapia',
+	'https://media.giphy.com/media/OsVHDytNJNQ7m/giphy.gif',
+	'http://flashfunpages.com/ecards/wp-content/uploads/2015/02/funnydogfaces-darn.jpg',
+	'http://www.amusingtime.com/images/016/funny-face-of-a-dog-31.jpg',
+	'http://img.huffingtonpost.com/asset/crop_0_309_1750_1123,scalefit_630_noupscale/55ce177014000077002e2f0e.jpeg',
+	'http://www.funnydogsite.com/pictures/Funny_Dog_Face132.jpg',
+	'http://barkpost.com/wp-content/uploads/2014/05/a.baa-Funny-dog-face-in-water.jpg',
+	'https://media.giphy.com/media/3orieRftQRDJLIlpQc/giphy.gif',
+	'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg'
+  ]
+  
+  quote = [
+	' you not down fool!',
+	' go ahead and bend over'
+  ]
+  
+  botResponse = dogs[0];
+  botResp2 = quote[0];
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/bots/post',
+    method: 'POST'
+  };
+
+  body = {
+    "bot_id" : botID,
+    "text" : botResponse + botResp2
   };
 
   console.log('sending ' + botResponse + ' to ' + botID);
