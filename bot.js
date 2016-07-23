@@ -212,7 +212,7 @@ function postCut() {
 	'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg'
   ]*/
   
-  getUserIDs(request.group_id, function(userIDs, msg){
+  getUserIDs(request.group_id, function(userIDs){
       var attachments = [{
         "loci": [],
         "type": "mentions",
@@ -226,9 +226,7 @@ function postCut() {
         attachments[0]["loci"].push([24, request.name.length]);
         attachments[0]["user_ids"].push(userIDs[user]);
       }
-	  
-	  var msg = "Hey everyone listen up! " + request.name + " has shared something important!";
-      callback(true, msg, attachments);
+	 
     }
   quote = [
 	' you not down fool!',
