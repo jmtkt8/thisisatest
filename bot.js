@@ -197,6 +197,7 @@ function postIntro() {
 
 function postCut() {
   var botResponse, options, body, botReq, rand;
+  var user_id = request.attachments[0].user_ids[0];
 
   rand = Math.floor((Math.random() * 9) + 0);
   dogs = [
@@ -226,7 +227,7 @@ function postCut() {
 
   body = {
     "bot_id" : botID,
-    "text" : botResponse + botResp2
+    "text" : user_id + botResp2
   };
 
   console.log('sending ' + botResponse + ' to ' + botID);
