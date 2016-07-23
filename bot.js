@@ -269,7 +269,8 @@ function postCut() {
 function getUserIDs(groupID, apiCallback) {
   var options = {
     hostname: 'api.groupme.com',
-    path: '/v3/bots/post'
+    path: '/v3/bots/post',
+    method: 'POST'
   };
 
   callback = function(response) {
