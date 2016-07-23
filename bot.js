@@ -7,7 +7,7 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /^Conquistabot cool guy me$/;
 	  helloRegex = /^Conquistabot how are you$/;
-	  dogRegex = /^Conquistabot dog me$/;
+	  dogRegex = /^Conquistabot dawg face$/;
 	  introRegex = /^Conquistabot introduce yourself/;
 	  helpRegex = /^Conquistabot help/;
 	  
@@ -21,7 +21,7 @@ function respond() {
     this.res.end();
   }else if(request.text && dogRegex.test(request.text)){
     this.res.writeHead(200);
-    dogMe();
+    postDogFace();
     this.res.end();
   }else if(request.text && introRegex.test(request.text)){
     this.res.writeHead(200);
@@ -106,15 +106,20 @@ function postResp() {
 }
 
 
-function dogMe() {
+function postDogFace() {
   var botResponse, options, body, botReq, rand;
 
-  rand = Math.floor((Math.random() * 3) + 0);
+  rand = Math.floor((Math.random() * 9) + 0);
   dogs = [
 	'https://media.giphy.com/media/Llhp3CviKCKWc/giphy.gif',
 	'https://media.giphy.com/media/OsVHDytNJNQ7m/giphy.gif',
 	'http://flashfunpages.com/ecards/wp-content/uploads/2015/02/funnydogfaces-darn.jpg',
-	'https://media.giphy.com/media/3orieRftQRDJLIlpQc/giphy.gif'
+	'http://www.amusingtime.com/images/016/funny-face-of-a-dog-31.jpg',
+	'http://img.huffingtonpost.com/asset/crop_0_309_1750_1123,scalefit_630_noupscale/55ce177014000077002e2f0e.jpeg',
+	'http://www.funnydogsite.com/pictures/Funny_Dog_Face132.jpg',
+	'http://barkpost.com/wp-content/uploads/2014/05/a.baa-Funny-dog-face-in-water.jpg',
+	'https://media.giphy.com/media/3orieRftQRDJLIlpQc/giphy.gif',
+	'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg'
   ]
   
   botResponse = dogs[rand];
