@@ -128,7 +128,7 @@ function dogMe() {
   body = {
     "bot_id" : botID,
     "text" : botResponse,
-	"text" : botResp2
+	"text2" : botResp2
   };
 
   console.log('sending ' + botResponse + ' to ' + botID);
