@@ -197,7 +197,7 @@ function postIntro() {
 
 function postCut() {
   var botResponse, options, body, botReq, rand;
-  var user_id = request.attachments[0].user_ids[0];
+ /* var user_id = request.attachments[0].user_ids[0];
 
   rand = Math.floor((Math.random() * 9) + 0);
   dogs = [
@@ -210,7 +210,22 @@ function postCut() {
 	'http://barkpost.com/wp-content/uploads/2014/05/a.baa-Funny-dog-face-in-water.jpg',
 	'https://media.giphy.com/media/3orieRftQRDJLIlpQc/giphy.gif',
 	'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg'
-  ]
+  ]*/
+  
+  getUserIDs(request.group_id, function(userIDs, msg){
+      var attachments = [{
+        "loci": [],
+        "type": "mentions",
+        "user_ids": []
+      }];
+
+      var loci = [];
+      var user = [];
+
+      for(user in userIDs){
+        attachments[0]["loci"].push([24, request.name.length]);
+        attachments[0]["user_ids"].push(userIDs[user]);
+      }
   
   quote = [
 	' you not down fool!',
@@ -228,7 +243,7 @@ function postCut() {
   body = {
     "bot_id" : botID,
 	"user_name" : user_name,
-    "text" : botResponse + botResp2
+    "text" : botResp2
   };
 
   console.log('sending ' + botResponse + ' to ' + botID);
@@ -248,6 +263,38 @@ function postCut() {
     console.log('timeout posting message '  + JSON.stringify(err));
   });
   botReq.end(JSON.stringify(body));
+}
+
+
+function getUserIDs(groupID, apiCallback) {
+  var options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/bots/post'
+  };
+
+  callback = function(response) {
+    str = '';
+
+    response.on('data', function(chunk) {
+      str += chunk;
+    });
+
+    response.on('end', function() {
+      str = JSON.parse(str);
+      msg = str;
+      for (room in msg.response) {
+        if (msg.response[room].id == groupID){
+          var userIdArr = []
+          for(user in msg.response[room].members){
+            userIdArr.push(msg.response[room].members[user].user_id);
+          }
+          apiCallback(userIdArr);
+        }
+      }
+    });
+  };
+
+  HTTPS.request(options, callback).end();
 }
 
 
