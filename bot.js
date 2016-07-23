@@ -197,44 +197,61 @@ function postIntro() {
 
 function postCut() {
   var botResponse, options, body, botReq, rand;
- /* var user_id = request.attachments[0].user_ids[0];
+  var user_id = request.attachments[0].user_ids[0];
 
-  rand = Math.floor((Math.random() * 9) + 0);
-  dogs = [
-	'@James Tapia',
-	'https://media.giphy.com/media/OsVHDytNJNQ7m/giphy.gif',
-	'http://flashfunpages.com/ecards/wp-content/uploads/2015/02/funnydogfaces-darn.jpg',
-	'http://www.amusingtime.com/images/016/funny-face-of-a-dog-31.jpg',
-	'http://img.huffingtonpost.com/asset/crop_0_309_1750_1123,scalefit_630_noupscale/55ce177014000077002e2f0e.jpeg',
-	'http://www.funnydogsite.com/pictures/Funny_Dog_Face132.jpg',
-	'http://barkpost.com/wp-content/uploads/2014/05/a.baa-Funny-dog-face-in-water.jpg',
-	'https://media.giphy.com/media/3orieRftQRDJLIlpQc/giphy.gif',
-	'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg'
-  ]*/
-  
-  getUserIDs(request.group_id, function(userIDs){
-      var attachments = [{
-        "loci": [],
-        "type": "mentions",
-        "user_ids": []
-      }];
-
-      var loci = [];
-      var user = [];
-
-      for(user in userIDs){
-        attachments[0]["loci"].push([24, request.name.length]);
-        attachments[0]["user_ids"].push(userIDs[user]);
-      }
-	 
-    }
-  quote = [
-	' you not down fool!',
-	' go ahead and bend over'
+  rand = Math.floor((Math.random() * 32) + 0);
+  members = [
+	'Aaron',
+	'Abarca',
+	'Alexa',
+	'Ana',
+	'Ayala',
+	'B Savage',
+	'Badger',
+	'Brenda',
+	'Brosman',
+	'Chris Rodriguez',
+	'Emily',
+	'Fronklin',
+	'Gilberto',
+	'Gladis',
+	'Jess',
+	'Joel',
+	'Juan',
+	'Carina',
+	'Los',
+	'Melissa',
+	'Miguel',
+	'Nathan',
+	'Nick',
+	'Marco',
+	'Paola',
+	'James',
+	'Rob',
+	'Rodrigo',
+	'Sasha',
+	'Taylor',
+	'Tre',
+	'Dakota'
   ]
   
-  botResponse = dogs[0];
-  botResp2 = quote[0];
+  rand2 = Math.floor((Math.random() * 11) + 0);
+  quote = [
+	', you not down fool!',
+	', andale por pendej@',
+	', assume the position',
+	', te aguantas o te jodes',
+	', bring dat ass here boi',
+	', te dije que siendo Greek no te conviene',
+	', RIP dat ass',
+	', quita la mano',
+	', with a purpose',
+	', querias pledge ahora te aguantas',
+	', no pain no gain'
+  ]
+  
+  memberResponse = members[rand];
+  quoteResponse = quote[rand2];
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
@@ -244,7 +261,7 @@ function postCut() {
   body = {
     "bot_id" : botID,
 	"user_name" : user_name,
-    "text" : botResp2
+    "text" : memberResponse + quoteResponse
   };
 
   console.log('sending ' + botResponse + ' to ' + botID);
@@ -267,37 +284,6 @@ function postCut() {
 }
 
 
-function getUserIDs(groupID, apiCallback) {
-  var options = {
-    hostname: 'api.groupme.com',
-    path: '/v3/bots/post',
-    method: 'POST'
-  };
-
-  callback = function(response) {
-    str = '';
-
-    response.on('data', function(chunk) {
-      str += chunk;
-    });
-
-    response.on('end', function() {
-      str = JSON.parse(str);
-      msg = str;
-      for (room in msg.response) {
-        if (msg.response[room].id == groupID){
-          var userIdArr = []
-          for(user in msg.response[room].members){
-            userIdArr.push(msg.response[room].members[user].user_id);
-          }
-          apiCallback(userIdArr);
-        }
-      }
-    });
-  };
-
-  HTTPS.request(options, callback).end();
-}
 
 
 exports.respond = respond;
