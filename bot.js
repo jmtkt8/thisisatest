@@ -102,11 +102,11 @@ function postResp() {
 function dogMe() {
   var botResponse, options, body, botReq, rand;
 
-  rand = (Math.random() * 3) + 1;
+  rand = Math.floor((Math.random() * 3) + 1);
   dogs = [
-	'http://i.imgur.com/VKCrLAF.gif',
-	'http://i.imgur.com/R8se5g1.gif',
-	'http://i.imgur.com/Bw3mIJF.gif'
+	'https://media.giphy.com/media/Llhp3CviKCKWc/giphy.gif',
+	'https://media.giphy.com/media/OsVHDytNJNQ7m/giphy.gif',
+	'https://media.giphy.com/media/3orieRftQRDJLIlpQc/giphy.gif'
   ]
   
   botResponse = dogs[rand];
