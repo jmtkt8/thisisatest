@@ -8,9 +8,10 @@ function respond() {
       botRegex = /^Conquistabot cool guy me$/;
 	  helloRegex = /^Conquistabot how are you$/;
 	  dogRegex = /^Conquistabot dawg face$/;
-	  introRegex = /^Conquistabot introduce yourself/;
-	  helpRegex = /^Conquistabot help/;
-	  cutRegex = /^Conquistabot who's getting in the cut today/;
+	  introRegex = /^Conquistabot introduce yourself$/;
+	  helpRegex = /^Conquistabot help$/;
+	  cutRegex = /^Conquistabot who's getting in the cut today$/;
+	  zetaxiRegex = /^Conquistabot Zeta Xi founders$/
 	  
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -32,7 +33,10 @@ function respond() {
     this.res.writeHead(200);
     postCut();
     this.res.end();
-  }else {
+  }else if(request.text && zetaxiRegex.test(request.text)){
+    this.res.writeHead(200);
+    postZetaXiFounders();
+    this.res.end();else {
     console.log("don't care");
     this.res.writeHead(200);
     this.res.end();
@@ -234,7 +238,7 @@ function postCut() {
 	'Dakota'
   ]
   
-  rand2 = Math.floor((Math.random() * 11) + 0);
+  rand2 = Math.floor((Math.random() * 12) + 0);
   quote = [
 	', you not down fool!',
 	', andale por pendej@',
@@ -246,7 +250,8 @@ function postCut() {
 	', quita la mano',
 	', with a purpose',
 	', querias pledge ahora te aguantas',
-	', no pain no gain'
+	', no pain no gain',
+	', con fuerza'
   ]
   
   memberResponse = members[rand];
@@ -260,6 +265,41 @@ function postCut() {
   body = {
     "bot_id" : botID,
     "text" : memberResponse + quoteResponse
+  };
+
+  console.log('sending ' + botResponse + ' to ' + botID);
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      } else {
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
+}
+
+function postZetaXiFounders() {
+  var botResponse, options, body, botReq;
+
+  botResponse = "*Stomps foot twice*\n #1: Ana Gonzalez\n #2: Brenda Crts\n #3: Emily Fowler\n";
+
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/bots/post',
+    method: 'POST'
+  };
+
+  body = {
+    "bot_id" : botID,
+    "text" : botResponse
   };
 
   console.log('sending ' + botResponse + ' to ' + botID);
