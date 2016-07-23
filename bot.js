@@ -151,7 +151,7 @@ function dogMe() {
 function postIntro() {
   var botResponse, options, body, botReq;
 
-  botResponse = 'I am the ACE of this chat! I live for this chat, I breathe for this chat, and I DIE FOR MY FRAT! Type the command "Conquistabot help" to see what I can do';
+  botResponse = 'I am the ACE of this chat! I live for this chat, I breathe for this chat...but most importantly I DIE FOR MY FRAT! Type the command "Conquistabot help" to see what I can do';
 
   options = {
     hostname: 'api.groupme.com',
