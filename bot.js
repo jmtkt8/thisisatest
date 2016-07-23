@@ -118,7 +118,6 @@ function dogMe() {
   ]
   
   botResponse = dogs[rand];
-  botResp2 = 'hello'
 
   options = {
     hostname: 'api.groupme.com',
@@ -128,8 +127,7 @@ function dogMe() {
 
   body = {
     "bot_id" : botID,
-    "text" : botResponse,
-	"text2" : botResp2
+    "text" : botResponse
   };
 
   console.log('sending ' + botResponse + ' to ' + botID);
