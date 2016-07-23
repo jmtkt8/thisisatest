@@ -6,8 +6,8 @@ var botID = process.env.BOT_ID;
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /^Conquistabot cool guy me$/;
-	  helloRegex = /^Conquistabot how are you$/
-	  dogRegex = /^Conquistabot dog me$/
+	  helloRegex = /^Conquistabot how are you$/;
+	  dogRegex = /^Conquistabot dog me$/;
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage();
@@ -102,12 +102,12 @@ function postResp() {
 function dogMe() {
   var botResponse, options, body, botReq, rand;
 
-  rand = (Math.random() * 3) + 1
-  dogs = {
+  rand = (Math.random() * 3) + 1;
+  dogs = [
 	'http://i.imgur.com/VKCrLAF.gif',
 	'http://i.imgur.com/R8se5g1.gif',
 	'http://i.imgur.com/Bw3mIJF.gif'
-  }
+  ]
   
   botResponse = dogs[rand];
 
