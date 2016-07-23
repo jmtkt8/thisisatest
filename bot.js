@@ -196,8 +196,7 @@ function postIntro() {
 
 
 function postCut() {
-  var botResponse, options, body, botReq, rand;
-  var user_id = request.attachments[0].user_ids[0];
+  var botResponse, options, body, botReq, rand, rand2;
 
   rand = Math.floor((Math.random() * 32) + 0);
   members = [
@@ -260,7 +259,6 @@ function postCut() {
 
   body = {
     "bot_id" : botID,
-	"user_name" : user_name,
     "text" : memberResponse + quoteResponse
   };
 
