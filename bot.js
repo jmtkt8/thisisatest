@@ -227,7 +227,8 @@ function postCut() {
 
   body = {
     "bot_id" : botID,
-    "text" : user_id + botResp2
+	"user_name" : user_name,
+    "text" : botResponse + botResp2
   };
 
   console.log('sending ' + botResponse + ' to ' + botID);
