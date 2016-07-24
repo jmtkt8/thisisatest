@@ -362,7 +362,7 @@ function postZetaXiFounders() {
 function postDeltaDeltaFounders() {
   var botResponse, options, body, botReq;
 
-  botResponse = "#1: Alex Sanchez\n #2: Andrew Abarca\n #3: Andrew Brosman\n #4: Joel Dalton\n #5: Jonathan Rife\n #6: Nick Ramos\n #7: Robert Green\n #8: Juan Boyd\n #9:Cesar Pulido\n #10: Carlos Huezo\n #12: Tre Griffin";
+  botResponse = "#1: Alex 'Perseverance' Sanchez\n #2: Andrew 'Mextli' Abarca\n #3: Andrew 'El Soldado' Brosman\n #4: Joel 'Voltage' Dalton\n #5: Jonathan Rife\n #6: Nick 'Anubis' Ramos\n #7: Robert 'Osiris' Green\n #8: Juan 'Hunab Ku' Boyd\n #9:Cesar Pulido\n #10: Carlos 'El Toro' Huezo\n #12: Tre 'Shaka Zulu' Griffin";
   
   options = {
     hostname: 'api.groupme.com',
