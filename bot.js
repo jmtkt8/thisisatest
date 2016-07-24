@@ -5,13 +5,19 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^Conquistabot cool guy me$/;
-	  helloRegex = /^Conquistabot how are you$/;
+      //botRegex = /^Conquistabot cool guy me$/;
+	  //helloRegex = /^Conquistabot how are you$/;
 	  dogRegex = /^Conquistabot dawg face$/;
 	  introRegex = /^Conquistabot introduce yourself$/;
 	  helpRegex = /^Conquistabot help$/;
 	  cutRegex = /^Conquistabot who's getting in the cut today$/;
-	  zetaxiRegex = /^Conquistabot Zeta Xi founders$/
+	  zetaxiRegex = /^Conquistabot Zeta Xi founders$/;
+	  deltadeltaRegex = /^Conquistabot Delta Delta founders$/;
+	  ddBetaRegex = /^Conquistabot DD Beta line$/;
+	  ddGammaRegex = /^Conquistabot DD Gamma line$/;
+	  ddDeltaRegex = /^Conquistabot DD Delta line$/;
+	  ddEpsilonRegex = /^Conquistabot DD Epsilon line$/;
+	  ddZetaRegex = /^Conquistabot DD Zeta line$/;
 	  
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -36,6 +42,34 @@ function respond() {
   }else if(request.text && zetaxiRegex.test(request.text)){
     this.res.writeHead(200);
     postZetaXiFounders();
+    this.res.end();
+  }else if(request.text && deltadeltaRegex.test(request.text)){
+    this.res.writeHead(200);
+    postDeltaDeltaFoundersFounders();
+    this.res.end();
+  }else if(request.text && ddBetaRegex.test(request.text)){
+    this.res.writeHead(200);
+    postDDBetaLine();
+    this.res.end();
+  }else if(request.text && ddGammaRegex.test(request.text)){
+    this.res.writeHead(200);
+    postDDGammaLine();
+    this.res.end();
+  }else if(request.text && ddDeltaRegex.test(request.text)){
+    this.res.writeHead(200);
+    postDDDeltaLine();
+    this.res.end();
+  }else if(request.text && ddEpsilonRegex.test(request.text)){
+    this.res.writeHead(200);
+    postDDEpsilonLine();
+    this.res.end();
+  }else if(request.text && ddZetaRegex.test(request.text)){
+    this.res.writeHead(200);
+    postDDZetaLine();
+    this.res.end();
+  }else if(request.text && helpRegex.test(request.text)){
+    this.res.writeHead(200);
+    postHelp();
     this.res.end();
   }else {
     console.log("don't care");
@@ -218,7 +252,7 @@ function postCut() {
 	'Emily',
 	'Fronklin',
 	'Gilberto',
-	'Gladis',
+	'Gladiz',
 	'Jess',
 	'Joel',
 	'Juan',
@@ -290,7 +324,7 @@ function postCut() {
 function postZetaXiFounders() {
   var botResponse, options, body, botReq;
 
-  botResponse = "*Stomps foot twice*\n #1: Ana Gonzalez\n #2: Brenda Crts\n #3: Emily Fowler\n";
+  botResponse = "*Stomps foot twice*\n #1: Ana Gonzalez\n #2: Brenda Crts\n #3: Emily Fowler\n #4: Gladiz Lopez\n #5: Melissa Banuelos\n #6: Paola Mansilla\n #7: Jess Banuelos\n #8: Brittani Savage\n #9: Sasha Martin\n #10: Alexa Akana\n #11: Carina Jimenez";
   //botResponse = "*Stomps foot twice*";
   
   options = {
@@ -323,6 +357,252 @@ function postZetaXiFounders() {
   botReq.end(JSON.stringify(body));
 }
 
+
+function postDeltaDeltaFounders() {
+  var botResponse, options, body, botReq;
+
+  botResponse = "#1: Alex Sanchez\n #2: Andrew Abarca\n #3: Andrew Brosman\n #4: Joel Dalton\n #5: Jonathan Rife\n #6: Nick Ramos\n #7: Robert Green\n #8: Juan Boyd\n #9:Cesar Pulido\n #10: Carlos Huezo\n #12: Tre Griffin";
+  
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/bots/post',
+    method: 'POST'
+  };
+
+  body = {
+    "bot_id" : botID,
+    "text" : botResponse
+  };
+
+  console.log('sending ' + botResponse + ' to ' + botID);
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      } else {
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
+}
+
+
+function postDDBetaLine() {
+  var botResponse, options, body, botReq;
+
+  botResponse = "#3: Alex 'El Vencedor' Ayala\n #4: Fernando 'El Cruzado' Colon\n #6: Chris 'Maximus' Rodriguez";
+  
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/bots/post',
+    method: 'POST'
+  };
+
+  body = {
+    "bot_id" : botID,
+    "text" : botResponse
+  };
+
+  console.log('sending ' + botResponse + ' to ' + botID);
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      } else {
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
+}
+
+function postDDGammaLine() {
+  var botResponse, options, body, botReq;
+
+  botResponse = "#1: Chris 'Maui' Peritore\n #2: Marco 'Tlaloc' Hinojosa";
+  
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/bots/post',
+    method: 'POST'
+  };
+
+  body = {
+    "bot_id" : botID,
+    "text" : botResponse
+  };
+
+  console.log('sending ' + botResponse + ' to ' + botID);
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      } else {
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
+}
+
+function postDDDeltaLine() {
+  var botResponse, options, body, botReq;
+
+  botResponse = "#1: Aaron 'El Gaucho' Gonzalez\n #2: James 'Tonatiuh' Tapia";
+  
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/bots/post',
+    method: 'POST'
+  };
+
+  body = {
+    "bot_id" : botID,
+    "text" : botResponse
+  };
+
+  console.log('sending ' + botResponse + ' to ' + botID);
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      } else {
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
+}
+
+function postDDEpsilonLine() {
+  var botResponse, options, body, botReq;
+
+  botResponse = "#1: Miguel Palillero\n #2: Rodrigo Hinojosa";
+  
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/bots/post',
+    method: 'POST'
+  };
+
+  body = {
+    "bot_id" : botID,
+    "text" : botResponse
+  };
+
+  console.log('sending ' + botResponse + ' to ' + botID);
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      } else {
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
+}
+
+function postDDZetaLine() {
+  var botResponse, options, body, botReq;
+
+  botResponse = "#1: Gilberto Perez\n #2: Taylor Gentry\n #4: Dakota Vera\n #5: Nathan Cordero";
+  
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/bots/post',
+    method: 'POST'
+  };
+
+  body = {
+    "bot_id" : botID,
+    "text" : botResponse
+  };
+
+  console.log('sending ' + botResponse + ' to ' + botID);
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      } else {
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
+}
+
+function postHelp() {
+  var botResponse, options, body, botReq;
+
+  botResponse = "Conquistabot introduce yourself\n Conquistabot dawg face\n Conquistabot who's getting in the cut today\n Conquistabot Zeta Xi founders\n Conquistabot Delta Delta founders\n Conquistabot DD Beta line\n Conquistabot DD Gamma line\n Conquistabot DD Delta line\n Conquistabot DD Epsilon line\n Conquistabot DD Zeta line";
+  
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/bots/post',
+    method: 'POST'
+  };
+
+  body = {
+    "bot_id" : botID,
+    "text" : botResponse
+  };
+
+  console.log('sending ' + botResponse + ' to ' + botID);
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      } else {
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
+}
 
 
 
