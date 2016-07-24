@@ -19,7 +19,7 @@ function respond() {
 	  ddEpsilonRegex = /^Conquistabot DD Epsilon line$/;
 	  ddZetaRegex = /^Conquistabot DD Zeta line$/;
 	  
-  if(request.text && botRegex.test(request.text)) {
+  /*if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage();
     this.res.end();
@@ -27,7 +27,8 @@ function respond() {
     this.res.writeHead(200);
     postResp();
     this.res.end();
-  }else if(request.text && dogRegex.test(request.text)){
+  }*/
+  if(request.text && dogRegex.test(request.text)){
     this.res.writeHead(200);
     postDogFace();
     this.res.end();
@@ -45,7 +46,7 @@ function respond() {
     this.res.end();
   }else if(request.text && deltadeltaRegex.test(request.text)){
     this.res.writeHead(200);
-    postDeltaDeltaFoundersFounders();
+    postDeltaDeltaFounders();
     this.res.end();
   }else if(request.text && ddBetaRegex.test(request.text)){
     this.res.writeHead(200);
@@ -603,7 +604,5 @@ function postHelp() {
   });
   botReq.end(JSON.stringify(body));
 }
-
-
 
 exports.respond = respond;
