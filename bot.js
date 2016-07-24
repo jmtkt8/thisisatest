@@ -573,7 +573,7 @@ function postDDZetaLine() {
 function postHelp() {
   var botResponse, options, body, botReq;
 
-  botResponse = "Conquistabot introduce yourself\n Conquistabot dawg face\n Conquistabot who's getting in the cut today\n Conquistabot Zeta Xi founders\n Conquistabot Delta Delta founders\n Conquistabot DD Beta line\n Conquistabot DD Gamma line\n Conquistabot DD Delta line\n Conquistabot DD Epsilon line\n Conquistabot DD Zeta line";
+  botResponse = "Type any of the following commands (case sensitive)\n\nConquistabot introduce yourself\n Conquistabot dawg face\n Conquistabot who's getting in the cut today\n Conquistabot Zeta Xi founders\n Conquistabot Delta Delta founders\n Conquistabot DD Beta line\n Conquistabot DD Gamma line\n Conquistabot DD Delta line\n Conquistabot DD Epsilon line\n Conquistabot DD Zeta line";
   
   options = {
     hostname: 'api.groupme.com',
